@@ -17,6 +17,7 @@ const app = express();
 
 //View engine
 app.set('view engine', 'ejs');
+app.set('views','./public/src/views');
 
 //sessions active
 app.use(session({

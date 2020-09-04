@@ -21,3 +21,5 @@ HASH PASSWORD
 
 SESSOES DE LOGIN 
 12°- npm install --save express-session | Biblioteca para sessoes de login
+
+13°- npm i express-group-routes | Grupo de rotas
