@@ -1,7 +1,7 @@
 {
   "name": "crm-tcc",
   "version": "1.0.0",
-  "description": "Trababalho de conlusão do curso",
+  "description": "Trabalho de conlusão do curso",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
