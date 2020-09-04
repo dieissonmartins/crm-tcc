@@ -1,0 +1,23 @@
+
+PACOTES
+1° - npm init                       | Criar projeto
+2° - npm install --save express     | Instalar express
+3° - npm install --save sequelize   | Instalar sequelize ORM
+4° - npm install --save mysql2      | Instalar banco de dados mysql2
+5° - npm install --save body-parser | Instalar body-parser protocolo HTTP (POST, GET, PUT, PATCH, DELETE) 
+6° - npm install --save ejs         | Instalar EJS para o front-end
+7° - npm install --save slugify     | Biblioteca para transformar string em slug
+
+GIT
+7° - git init                       | Criar repositório
+8° - Criar arquivo .gitignore
+
+SERVIDOR
+9° - Montar servidor no index.js
+10°- Banco de dados
+
+HASH PASSWORD 
+11°- npm install --save bcrypt      | Biblioteca para encriptar dados 
+
+SESSOES DE LOGIN 
+12°- npm install --save express-session | Biblioteca para sessoes de login

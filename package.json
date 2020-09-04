@@ -1,0 +1,19 @@
+{
+  "name": "crm-tcc",
+  "version": "1.0.0",
+  "description": "Trababalho de conlusão do curso",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dieissonmartins/crm-tcc.git"
+  },
+  "author": "Dieisson Martins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dieissonmartins/crm-tcc/issues"
+  },
+  "homepage": "https://github.com/dieissonmartins/crm-tcc#readme"
+}
