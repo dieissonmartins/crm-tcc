@@ -17,8 +17,8 @@ router.group("/clientes", function(router) {
     router.post('/',            clienteController.store);
     router.get('/:id',          clienteController.show);
     router.get('/:id/edit',     clienteController.edit);
-    router.get('/:id/update',   clienteController.update);
-    router.get('/:id/destroy',  clienteController.destroy);
+    router.post('/:id/update',   clienteController.update);
+    router.post('/:id/destroy',  clienteController.destroy);
 });
 
 //exportar rotas
