@@ -1,7 +1,16 @@
+//importe model Cliente
+const Cliente = require("../../Models/Cliente"); 
 
-
+//lista de todos os clientes
 exports.index = (requisicao, resposta) => {
-    resposta.render('admin/clientes/index');
+    
+    try{
+        Cliente.findAll().then((clientes) => {
+            resposta.render('admin/clientes/index',{clientes: clientes});
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
 
 exports.create = (requisicao, resposta) => {
