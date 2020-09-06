@@ -41,7 +41,7 @@ const Endereco = connection.define('enderecos', {
 
 
 //atualizar tabela no banco de dados
-Endereco.sync({force: true});
+Endereco.sync({force: false});
 
 //exportar modulo
 module.exports = Endereco;
