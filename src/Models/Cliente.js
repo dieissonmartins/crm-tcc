@@ -28,7 +28,7 @@ Empresa.hasMany(Cliente);
 Contrato.hasMany(Cliente);
 
 //atualizar tabela no banco de dados
-Cliente.sync({force: true});
+Cliente.sync({force: false});
 
 //exportar modulo
 module.exports = Cliente;

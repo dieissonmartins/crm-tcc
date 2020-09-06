@@ -32,7 +32,7 @@ const Pessoa = connection.define('pessoas', {
 Pessoa.belongsTo(Endereco);
 
 //atualizar tabela no banco de dados
-Pessoa.sync({force: true});
+Pessoa.sync({force: false});
 
 //exportar modulo
 module.exports = Pessoa;

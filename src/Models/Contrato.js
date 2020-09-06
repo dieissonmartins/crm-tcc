@@ -33,7 +33,7 @@ Servico.hasMany(Contrato);
 
 
 //atualizar tabela no banco de dados
-Contrato.sync({force: true});
+Contrato.sync({force: false});
 
 //exportar modulo
 module.exports = Contrato;
