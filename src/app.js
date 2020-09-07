@@ -4,6 +4,7 @@ const express    = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./database/conexao');
 const session    = require('express-session');
+const path       = require("path");
 
 //routes
 const routes = require('./routes/routes');
@@ -29,6 +30,7 @@ app.use(session({
 
 //EJS arquivos estaticos 
 app.use(express.static('public'));
+app.use(express.static('node_modules'));
 
 //Body parser
 app.use(bodyParser.urlencoded({extends: false})); // aceitar dados de formularios 
