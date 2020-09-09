@@ -46,8 +46,8 @@
                               <td style="float: right;">
                                 <a href="/clientes/<%= cliente.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                                 <a href="/<%= cliente.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                <form action="/<%= cliente.id %>/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
-                                    <input type="hidden" name="id " value="<%= cliente.id %>">
+                                <form action="/clientes/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
+                                    <input type="hidden" name="id" value="<%= cliente.id %>">
                                     <button type="submit" class="btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                 </form>
                               </td>

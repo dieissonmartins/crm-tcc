@@ -47,6 +47,11 @@ exports.update = (requisicao, resposta) => {
     
 };
 
+//requisicao deleta cliente no banco de dados
 exports.destroy = (requisicao, resposta) => {
-    
+    var id = requisicao.body.id;
+
+    Cliente.destroy({where: {id: id}}).then(() => {
+        resposta.redirect("/clientes");
+    });
 };
