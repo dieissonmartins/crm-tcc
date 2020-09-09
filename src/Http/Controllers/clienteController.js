@@ -1,5 +1,6 @@
 //importe model Cliente
-const Cliente = require("../../Models/Cliente"); 
+const Cliente = require("../../Models/Cliente");
+const bodyParser = require('body-parser'); 
 
 //lista de todos os clientes
 exports.index = (requisicao, resposta) => {
@@ -13,12 +14,25 @@ exports.index = (requisicao, resposta) => {
     }
 };
 
+//formulario para cadastro de clientes
 exports.create = (requisicao, resposta) => {
-    resposta.render('admin/clientes/create');
+    try{
+        resposta.render('admin/clientes/create');
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
 
+//salva requisicao de cadastro de cliente no banco de dados
 exports.store = (requisicao, resposta) => {
-
+    var {nome,telefone} = requisicao.body;
+    
+    Cliente.create({
+        nome: nome,
+        telefone: telefone
+    }).then((cliente) => {
+        resposta.redirect('/clientes');
+    });
 };
 
 exports.show = (requisicao, resposta) => {

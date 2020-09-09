@@ -1,0 +1,76 @@
+
+<%- include('../../layout/header.ejs') %>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Clientes
+      <small>Cadastro de Clientes</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="/clientes"><i class="fa fa-dashboard"></i> Clientes</a>
+      </li>
+      <li>
+        <a href="/clientes/create"> Novo</a>
+      </li>
+    </ol>
+    
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <a href="/clientes/" class="btn btn-danger"><i class="fa fa-reply" aria-hidden="true"></i> VOLTAR</a>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form action="/clientes" method="POST" class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="nome" class="col-sm-2 control-label">Nome</label>
+    
+                      <div class="col-sm-8">
+                        <input type="text" name="nome" class="form-control" placeholder="Digite o nome do cliente">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="telefone" class="col-sm-2 control-label">Telefone</label>
+    
+                      <div class="col-sm-8">
+                        <input type="text" name="telefone" class="form-control" placeholder="Digite o telefone do cliente">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right">CADASTRAR</button>
+                  </div>
+                  <!-- /.box-footer -->
+                </form>
+              </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+  function deletarConfirmacao(event, form)
+  {
+      event.preventDefault();
+      var deletar = confirm("Você quer deletar este Cliente?");
+      if(deletar){
+          form.submit();
+      }
+  }
+</script>
+<%- include('../../layout/footer.ejs'); %> 
+
+  
+ 
