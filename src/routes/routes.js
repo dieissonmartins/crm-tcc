@@ -4,6 +4,8 @@ const express = require('express');
 
 //import controllers 
 const clienteController = require('../Http/Controllers/clienteController');
+const produtoController = require('../Http/Controllers/produtoController');
+const servicoController = require('../Http/Controllers/servicoController');
 
 //Middleware ADMIN
 const adminAuth = require('../Http/Middleware/adminAuth');
@@ -17,8 +19,28 @@ router.group('/clientes', function(router) {
     router.post('/',            clienteController.store);
     router.post('/destroy',     clienteController.destroy);
     router.get('/:id/edit',     clienteController.edit);
-    router.get('/:id/',          clienteController.show);
-    router.post('/update',   clienteController.update);
+    router.get('/:id/',         clienteController.show);
+    router.post('/update',      clienteController.update);
+});
+
+router.group('/servicos', function(router) {
+    router.get('/',             servicoController.index);
+    router.get('/create',       servicoController.create);
+    router.post('/',            servicoController.store);
+    router.post('/destroy',     servicoController.destroy);
+    router.get('/:id/edit',     servicoController.edit);
+    router.get('/:id/',         servicoController.show);
+    router.post('/update',      servicoController.update);
+});
+
+router.group('/produtos', function(router) {
+    router.get('/',             produtoController.index);
+    router.get('/create',       produtoController.create);
+    router.post('/',            produtoController.store);
+    router.post('/destroy',     produtoController.destroy);
+    router.get('/:id/edit',     produtoController.edit);
+    router.get('/:id/',         produtoController.show);
+    router.post('/update',      produtoController.update);
 });
 
 //exportar rotas
