@@ -35,8 +35,13 @@ exports.store = (requisicao, resposta) => {
     });
 };
 
+//modulo para buscar dados no banco de um cliente
 exports.show = (requisicao, resposta) => {
-    resposta.render('admin/clientes/show');
+    var id = requisicao.params.id;
+
+    Cliente.findOne({where: {id: id}}).then((cliente) => {
+        resposta.render('admin/clientes/show', {cliente: cliente});
+    });
 };
 
 //modulo para buscar dados no banco para serem editados
