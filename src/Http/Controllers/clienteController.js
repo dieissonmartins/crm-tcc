@@ -31,7 +31,7 @@ exports.store = (requisicao, resposta) => {
         nome: nome,
         telefone: telefone
     }).then((cliente) => {
-        resposta.redirect('/clientes');
+        //resposta.redirect('/clientes');
     });
 };
 
@@ -39,12 +39,25 @@ exports.show = (requisicao, resposta) => {
     resposta.render('admin/clientes/show');
 };
 
-exports.edit = (requisicao, resposta) => {
-    resposta.render('admin/clientes/edit');
+//modulo para buscar dados no banco para serem editados
+exports.edit = (requisicao, resposta) => {    
+    var id = requisicao.params.id;
+
+    Cliente.findOne({where: {id: id}}).then((cliente) => {
+        resposta.render('admin/clientes/edit', {cliente: cliente});
+    });
 };
 
+//salva requisicao para editar cliente no banco de dados
 exports.update = (requisicao, resposta) => {
-    
+   var {id,nome,telefone} = requisicao.body;
+   
+   Cliente.update({
+       nome: nome,
+       telefone: telefone
+   }, {where: {id: id}}).then(() => {
+        resposta.redirect("/clientes"); 
+   });
 };
 
 //requisicao deleta cliente no banco de dados
