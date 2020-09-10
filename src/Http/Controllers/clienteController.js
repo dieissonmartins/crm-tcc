@@ -16,6 +16,7 @@ exports.index = (requisicao, resposta) => {
 
 //formulario para cadastro de clientes
 exports.create = (requisicao, resposta) => {
+   
     try{
         resposta.render('admin/clientes/create');
     }catch(err){
@@ -27,49 +28,69 @@ exports.create = (requisicao, resposta) => {
 exports.store = (requisicao, resposta) => {
     var {nome,telefone} = requisicao.body;
     
-    Cliente.create({
-        nome: nome,
-        telefone: telefone
-    }).then((cliente) => {
-        //resposta.redirect('/clientes');
-    });
+    try{
+        Cliente.create({
+            nome: nome,
+            telefone: telefone
+        }).then((cliente) => {
+            resposta.redirect('/clientes');
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
 
 //modulo para buscar dados no banco de um cliente
 exports.show = (requisicao, resposta) => {
     var id = requisicao.params.id;
 
-    Cliente.findOne({where: {id: id}}).then((cliente) => {
-        resposta.render('admin/clientes/show', {cliente: cliente});
-    });
+    try{
+        Cliente.findOne({where: {id: id}}).then((cliente) => {
+            resposta.render('admin/clientes/show', {cliente: cliente});
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
 
 //modulo para buscar dados no banco para serem editados
 exports.edit = (requisicao, resposta) => {    
     var id = requisicao.params.id;
-
-    Cliente.findOne({where: {id: id}}).then((cliente) => {
-        resposta.render('admin/clientes/edit', {cliente: cliente});
-    });
+    
+    try{
+        Cliente.findOne({where: {id: id}}).then((cliente) => {
+            resposta.render('admin/clientes/edit', {cliente: cliente});
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
 
 //salva requisicao para editar cliente no banco de dados
 exports.update = (requisicao, resposta) => {
    var {id,nome,telefone} = requisicao.body;
-   
-   Cliente.update({
-       nome: nome,
-       telefone: telefone
-   }, {where: {id: id}}).then(() => {
-        resposta.redirect("/clientes"); 
-   });
+
+   try{
+        Cliente.update({
+            nome: nome,
+            telefone: telefone
+        }, {where: {id: id}}).then(() => {
+            resposta.redirect("/clientes"); 
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
 
 //requisicao deleta cliente no banco de dados
 exports.destroy = (requisicao, resposta) => {
     var id = requisicao.body.id;
 
-    Cliente.destroy({where: {id: id}}).then(() => {
-        resposta.redirect("/clientes");
-    });
+    try{
+        Cliente.destroy({where: {id: id}}).then(() => {
+            resposta.redirect("/clientes");
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
 };
