@@ -2,9 +2,6 @@
 //Modulos
 const Sequelize     = require('sequelize');
 const connection    = require('../database/conexao');
-const Pessoa        = require('./Pessoa');
-const Contrato      = require('./Contrato');
-const Empresa       = require('./Empresa');
 
 //Model
 const Cliente = connection.define('clientes', {
@@ -17,15 +14,6 @@ const Cliente = connection.define('clientes', {
         allowNull: false
     },
 });
-
-//relacionamento com cliente | MUITAS Pessoas para UM Cliente
-Pessoa.hasMany(Cliente);
-
-//relacionamento com Empresa | MUITAS Empresas para UM Cliente
-Empresa.hasMany(Cliente);
-
-//relacionamento com contratos | MUITOS contratos para UM Cliente
-Contrato.hasMany(Cliente);
 
 //atualizar tabela no banco de dados
 Cliente.sync({force: false});

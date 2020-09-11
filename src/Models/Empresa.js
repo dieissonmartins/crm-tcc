@@ -3,6 +3,7 @@
 const Sequelize     = require('sequelize');
 const connection    = require('../database/conexao');
 const Endereco      = require('./Endereco');
+const Cliente       = require('./Cliente');
 
 //Model
 const Empresa = connection.define('empresas', {
@@ -30,6 +31,9 @@ const Empresa = connection.define('empresas', {
 
 //relacionamento com endereços | UM Endereço para UMA Empresa
 Empresa.belongsTo(Endereco);
+
+//relacionamento com cliente | MUITAS Pessoas para UM Cliente
+Cliente.hasMany(Empresa);
 
 //atualizar tabela no banco de dados
 Empresa.sync({force: false});
