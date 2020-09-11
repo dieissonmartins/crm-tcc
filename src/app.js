@@ -9,9 +9,11 @@ const path       = require("path");
 //routes
 const routes = require('./routes/routes');
 
-//models
+//models 
 const Cliente   = require('./Models/Cliente'); 
-const Contrato  = require('./Models/Contrato');  
+const Empresa   = require('./Models/Empresa'); 
+const Pessoa    = require('./Models/Pessoa');
+const Contrato  = require('./Models/Contrato');
 
 //instância do express
 const app = express();
