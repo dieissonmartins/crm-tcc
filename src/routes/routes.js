@@ -6,9 +6,10 @@ const express = require('express');
 const clienteController = require('../Http/Controllers/clienteController');
 const produtoController = require('../Http/Controllers/produtoController');
 const servicoController = require('../Http/Controllers/servicoController');
+const pessoaController  = require('../Http/Controllers/pessoaController');
 
 //Middleware ADMIN
-const adminAuth = require('../Http/Middleware/adminAuth');
+//const adminAuth = require('../Http/Middleware/adminAuth');
 
 //carregar router
 const router = express.Router();
@@ -21,6 +22,16 @@ router.group('/clientes', function(router) {
     router.get('/:id/edit',     clienteController.edit);
     router.get('/:id/',         clienteController.show);
     router.post('/update',      clienteController.update);
+});
+
+router.group('/pessoas', function(router) {
+    router.get('/',             pessoaController.index);
+    router.post('/',            pessoaController.store);
+    router.get('/create',       pessoaController.create);
+    router.post('/destroy',     pessoaController.destroy);
+    router.get('/:id/edit',     pessoaController.edit);
+    router.get('/:id/',         pessoaController.show);
+    router.post('/update',      pessoaController.update);
 });
 
 router.group('/servicos', function(router) {
