@@ -10,23 +10,23 @@ const Cliente       = require('./Cliente');
 const Pessoa = connection.define('pessoas', {
     nome:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     cpf:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     dataNascimento:{
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     telefone:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     sexo:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
 });
 

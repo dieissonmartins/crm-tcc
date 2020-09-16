@@ -9,23 +9,23 @@ const Cliente       = require('./Cliente');
 const Empresa = connection.define('empresas', {
     nome:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     razaoSocial:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     cnpj:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     telefone:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     atividade:{
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: true
     },
 });
 

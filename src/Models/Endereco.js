@@ -7,35 +7,35 @@ const connection    = require('../database/conexao');
 const Endereco = connection.define('enderecos', {
     tipo:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     cep:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     estado:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     cidade:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     bairro:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     logradouro:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     numero:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     complemento:{
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: true
     },
 });
 

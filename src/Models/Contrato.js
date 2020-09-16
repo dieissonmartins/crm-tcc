@@ -11,19 +11,19 @@ const Empresa       = require('./Empresa');
 const Contrato = connection.define('contratos', {
     dataVenda:{
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     dataVencimento:{
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     valor:{
         type: Sequelize.DECIMAL(10, 2),
-        allowNull: false
+        allowNull: true
     },
     anexoFile:{
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: true
     },
 });
 

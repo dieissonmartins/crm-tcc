@@ -7,15 +7,15 @@ const connection    = require('../database/conexao');
 const Servico = connection.define('servicos', {
     nome:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     descricao:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     valor:{
         type: Sequelize.DECIMAL(10, 2),
-        allowNull: false
+        allowNull: true
     },
 });
 

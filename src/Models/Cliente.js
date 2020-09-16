@@ -7,11 +7,11 @@ const connection    = require('../database/conexao');
 const Cliente = connection.define('clientes', {
     nome:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     telefone:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
 });
 
