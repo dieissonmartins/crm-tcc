@@ -8,6 +8,7 @@ const produtoController = require('../Http/Controllers/produtoController');
 const servicoController = require('../Http/Controllers/servicoController');
 const pessoaController  = require('../Http/Controllers/pessoaController');
 const empresaController = require('../Http/Controllers/empresaController');
+const contratoController = require('../Http/Controllers/contratoController');
 
 //Middleware ADMIN
 //const adminAuth = require('../Http/Middleware/adminAuth');
@@ -43,6 +44,16 @@ router.group('/empresas', function(router) {
     router.get('/:id/edit/:clienteId',     empresaController.edit);
     router.get('/:id/',         empresaController.show);
     router.post('/update',      empresaController.update);
+});
+
+router.group('/contratos', function(router) {
+    //router.get('/',             contratoController.index);
+    router.post('/',            contratoController.store);
+    router.get('/:id/create',   contratoController.create);
+    //router.post('/destroy',     contratoController.destroy);
+    //router.get('/:id/edit/:clienteId',     contratoController.edit);
+    //router.get('/:id/',         contratoController.show);
+    //router.post('/update',      contratoController.update);
 });
 
 router.group('/servicos', function(router) {
