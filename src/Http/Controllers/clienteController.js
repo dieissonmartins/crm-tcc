@@ -48,7 +48,7 @@ exports.show = (requisicao, resposta) => {
     try{
         Cliente.findOne({
             where: {id: id},
-            include:[{model: Pessoa}] //Join para incluir pessoas do cliente 
+            include:[{model: Pessoa}] //Join para incluir pessoas da clientes 
         }).then((cliente) => {
             resposta.render('admin/clientes/show', {cliente: cliente, pessoas: cliente.pessoas});
         });

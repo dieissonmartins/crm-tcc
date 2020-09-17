@@ -29,7 +29,7 @@ router.group('/pessoas', function(router) {
     router.post('/',            pessoaController.store);
     router.get('/:id/create',   pessoaController.create);
     router.post('/destroy',     pessoaController.destroy);
-    router.get('/:id/edit',     pessoaController.edit);
+    router.get('/:id/edit/:clienteId',     pessoaController.edit);
     router.get('/:id/',         pessoaController.show);
     router.post('/update',      pessoaController.update);
 });

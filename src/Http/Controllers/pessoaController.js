@@ -61,11 +61,11 @@ exports.show = (requisicao, resposta) => {
 
 //modulo para buscar dados no banco para serem editados
 exports.edit = (requisicao, resposta) => {    
-    var id = requisicao.params.id;
+    var {id,clienteId} = requisicao.params;
     
     try{
         Pessoa.findOne({where: {id: id}}).then((pessoa) => {
-            resposta.render('admin/pessoas/edit', {pessoa: pessoa});
+            resposta.render('admin/pessoas/edit', {pessoa: pessoa, clienteId: clienteId});
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
@@ -74,14 +74,18 @@ exports.edit = (requisicao, resposta) => {
 
 //salva requisicao para editar pessoa no banco de dados
 exports.update = (requisicao, resposta) => {
-   var {id,nome,telefone} = requisicao.body;
+   var {id,nome,cpf,dataNascimento,telefone,sexo,clienteId} = requisicao.body;
 
    try{
         Pessoa.update({
             nome: nome,
-            telefone: telefone
+            cpf: cpf,
+            dataNascimento: dataNascimento,
+            telefone: telefone,
+            sexo: sexo,
+            clienteId: clienteId,
         }, {where: {id: id}}).then(() => {
-            resposta.redirect("/pessoas"); 
+            resposta.redirect('/clientes/'+ clienteId);
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
@@ -91,10 +95,11 @@ exports.update = (requisicao, resposta) => {
 //requisicao deleta pessoa no banco de dados
 exports.destroy = (requisicao, resposta) => {
     var id = requisicao.body.id;
+    var clienteId = requisicao.body.clienteId;
 
     try{
         Pessoa.destroy({where: {id: id}}).then(() => {
-            resposta.redirect("/pessoas");
+            resposta.redirect('/clientes/'+ clienteId);
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
