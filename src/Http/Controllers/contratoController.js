@@ -1,11 +1,20 @@
 
+const Servico = require("../../Models/Servico");
+const Produto = require("../../Models/Produto");
 
 //formulario para cadastro de clientes
-exports.create = (requisicao, resposta) => {
+exports.create =  async (requisicao, resposta) => {
     var pessoaId = requisicao.body.id;
 
     try{
-        resposta.render('admin/contratos/create', {pessoaId: pessoaId});
+        const servicos = await Servico.findAll();
+        const produtos = await Produto.findAll();    
+
+        resposta.render('admin/contratos/create', {
+            pessoaId: pessoaId,
+            servicos: servicos,
+            produtos: produtos,
+        });
     }catch(err){
         resposta.render(400).json({ error: err.message });
     }

@@ -59,10 +59,10 @@
       
                         <div class="col-sm-8">
                             <select class="form-control" name="produtoId">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                                <option value="audi" selected>Audi</option>
+                                <option value="">Selecione</option>
+                                <% produtos.forEach(produto => { %>
+                                    <option value="<%= produto.id %>"><%= produto.nome %></option>
+                                <% }); %>
                               </select>
                         </div>
                     </div>
@@ -71,10 +71,10 @@
       
                         <div class="col-sm-8">
                             <select class="form-control" name="servicoId">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                                <option value="audi" selected>Audi</option>
+                                <option value="">Selecione</option>
+                                <% servicos.forEach(servico => { %>
+                                    <option value="<%= servico.id %>"><%= servico.nome %></option>
+                                <% }); %>
                               </select>
                         </div>
                     </div>
