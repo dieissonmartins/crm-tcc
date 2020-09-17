@@ -76,9 +76,9 @@
                       <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Cpf</th>
                         <th>Telefone</th>
-                        <th>Telefone</th>
-                        <th>Data</th>
+                        <th>Sexo</th>
                         <th>Data</th>
                         <th>Acões</th>
                       </tr>
@@ -97,6 +97,7 @@
                             <a href="/pessoas/<%= pessoa.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <form action="/pessoas/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
                                 <input type="hidden" name="id" value="<%= pessoa.id %>">
+                                <input type="hidden" name="clienteId" value="<%= cliente.id %>">
                                 <button type="submit" class="btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                             </form>
                           </td>
