@@ -1,6 +1,7 @@
 //importe model Cliente
-const Cliente = require("../../Models/Cliente");
-const bodyParser = require('body-parser'); 
+const Cliente       = require("../../Models/Cliente");
+const Pessoa        = require("../../Models/Pessoa");
+const bodyParser    = require('body-parser'); 
 
 //lista de todos os clientes
 exports.index = (requisicao, resposta) => {
@@ -45,8 +46,11 @@ exports.show = (requisicao, resposta) => {
     var id = requisicao.params.id;
 
     try{
-        Cliente.findOne({where: {id: id}}).then((cliente) => {
-            resposta.render('admin/clientes/show', {cliente: cliente});
+        Cliente.findOne({
+            where: {id: id},
+            include:[{model: Pessoa}] //Join para incluir pessoas do cliente 
+        }).then((cliente) => {
+            resposta.render('admin/clientes/show', {cliente: cliente, pessoas: cliente.pessoas});
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
