@@ -77,5 +77,25 @@ $(document).ready(function() {
     });
 
     //quebra linha do objeto
-    $("#tabela-produtos tbody tr #nome").css("white-space","pre-wrap");
+    $("#tabela-pessoas tbody tr #nome").css("white-space","pre-wrap");
+
+     //table produtos
+     $('#tabela-empresas').DataTable({
+        responsive: true,
+        "pageLength": 5,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                pageSize: 'TABLOID'
+            },
+            'excel','csv','print','copy' 
+        ],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        }
+    });
+
+    //quebra linha do objeto
+    $("#tabela-empresas tbody tr #nome").css("white-space","pre-wrap");
 });

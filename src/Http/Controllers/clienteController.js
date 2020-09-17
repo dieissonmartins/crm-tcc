@@ -2,6 +2,7 @@
 const Cliente       = require("../../Models/Cliente");
 const Pessoa        = require("../../Models/Pessoa");
 const bodyParser    = require('body-parser'); 
+const Empresa = require("../../Models/Empresa");
 
 //lista de todos os clientes
 exports.index = (requisicao, resposta) => {
@@ -48,9 +49,14 @@ exports.show = (requisicao, resposta) => {
     try{
         Cliente.findOne({
             where: {id: id},
-            include:[{model: Pessoa}] //Join para incluir pessoas da clientes 
+            include:[{model: Pessoa},{model: Empresa}], //Join para incluir pessoas da clientes  
         }).then((cliente) => {
-            resposta.render('admin/clientes/show', {cliente: cliente, pessoas: cliente.pessoas});
+            //resposta.json(cliente);
+            resposta.render('admin/clientes/show', {
+                cliente: cliente,
+                pessoas: cliente.pessoas,
+                empresas: cliente.empresas
+            });
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
