@@ -65,8 +65,9 @@ exports.edit = (requisicao, resposta) => {
     var {id,clienteId} = requisicao.params;
     
     try{
-        Empresa.findOne({where: {id: id}}).then((pessoa) => {
-            resposta.render('admin/pessoas/edit', {pessoa: pessoa, clienteId: clienteId});
+        Empresa.findOne({where: {id: id}}).then((empresa) => {
+            //resposta.json(empresa);
+            resposta.render('admin/empresas/edit', {empresa: empresa, clienteId: clienteId});
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
@@ -75,15 +76,16 @@ exports.edit = (requisicao, resposta) => {
 
 //salva requisicao para editar pessoa no banco de dados
 exports.update = (requisicao, resposta) => {
-   var {id,nome,cpf,dataNascimento,telefone,sexo,clienteId} = requisicao.body;
-
+   var {id,nome,cnpj,atividade,razaoSocial,telefone,clienteId} = requisicao.body;
+    
+   //resposta.json(requisicao.body);
    try{
         Empresa.update({
             nome: nome,
-            cpf: cpf,
-            dataNascimento: dataNascimento,
+            cnpj: cnpj,
+            atividade: atividade,
+            razaoSocial: razaoSocial,
             telefone: telefone,
-            sexo: sexo,
             clienteId: clienteId,
         }, {where: {id: id}}).then(() => {
             resposta.redirect('/clientes/'+ clienteId);
