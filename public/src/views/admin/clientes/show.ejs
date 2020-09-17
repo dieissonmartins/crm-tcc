@@ -93,7 +93,7 @@
                           <td><%= pessoa.sexo %></td>
                           <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(pessoa.createdAt) %></td>
                           <td style="float: right;">
-                            <a href="/pessoas/<%= pessoa.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
+                            <a href="/pessoas/<%= pessoa.id %>/<%= cliente.id %>" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                             <a href="/pessoas/<%= pessoa.id %>/edit/<%= cliente.id %>/" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <form action="/pessoas/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
                                 <input type="hidden" name="id" value="<%= pessoa.id %>">

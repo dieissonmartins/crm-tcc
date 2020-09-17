@@ -31,7 +31,7 @@ router.group('/pessoas', function(router) {
     router.get('/:id/create',   pessoaController.create);
     router.post('/destroy',     pessoaController.destroy);
     router.get('/:id/edit/:clienteId',     pessoaController.edit);
-    router.get('/:id/',         pessoaController.show);
+    router.get('/:id/:clienteId',         pessoaController.show);
     router.post('/update',      pessoaController.update);
 });
 

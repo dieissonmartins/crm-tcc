@@ -48,11 +48,11 @@ exports.store = (requisicao, resposta) => {
 
 //modulo para buscar dados no banco de um pessoa
 exports.show = (requisicao, resposta) => {
-    var id = requisicao.params.id;
+    var {id,clienteId} = requisicao.params;
 
     try{
         Pessoa.findOne({where: {id: id}}).then((pessoa) => {
-            resposta.render('admin/pessoas/show', {pessoa: pessoa});
+            resposta.render('admin/pessoas/show', {pessoa: pessoa, clienteId: clienteId});
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
