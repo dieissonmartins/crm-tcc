@@ -1,6 +1,7 @@
 
 //importe model pessoa
 const Pessoa = require("../../Models/Pessoa");
+const Contrato = require("../../Models/Contrato");
 
 //lista de todos os pessoas
 exports.index = (requisicao, resposta) => {
@@ -51,8 +52,15 @@ exports.show = (requisicao, resposta) => {
     var {id,clienteId} = requisicao.params;
 
     try{
-        Pessoa.findOne({where: {id: id}}).then((pessoa) => {
-            resposta.render('admin/pessoas/show', {pessoa: pessoa, clienteId: clienteId});
+        Pessoa.findOne({
+            where: {id: id},
+            include:[{model: Contrato}], //Join para incluir contratos  
+        }).then((pessoa) => {
+            resposta.render('admin/pessoas/show', {
+                pessoa: pessoa,
+                clienteId: clienteId,
+                contratos: pessoa.contratos
+            });
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
