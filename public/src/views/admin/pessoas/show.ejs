@@ -81,6 +81,9 @@
                         <tr>
                           <th>ID</th>
                           <th>Data da Venda</th>
+                          <th>Data de Vencimento</th>
+                          <th>Valor</th>
+                          <th>Descrição</th>
                           <th>Ações</th>
                         </tr>
                     </thead>
@@ -88,7 +91,10 @@
                       <% contratos.forEach(contrato => { %>
                           <tr>
                               <td><%= contrato.id %></td>
-                              <td id="nome"><%= contrato.dataVenda %></td>
+                              <td><%= contrato.dataVenda %></td>
+                              <td><%= contrato.dataVencimento %></td>
+                              <td><%= contrato.valor %></td>
+                              <td></td>
                               <td style="float: right;">
                                 <a href="/contratos/<%= contrato.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                                 <a href="/contratos/<%= contrato.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
