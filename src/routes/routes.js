@@ -47,7 +47,7 @@ router.group('/empresas', function(router) {
 });
 
 router.group('/contratos', function(router) {
-    //router.get('/',             contratoController.index);
+    router.get('/',             contratoController.index);
     router.post('/',            contratoController.store);
     router.get('/:id/:clienteId/create',   contratoController.create);
     //router.post('/destroy',     contratoController.destroy);

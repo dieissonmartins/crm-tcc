@@ -3,6 +3,17 @@ const Servico = require("../../Models/Servico");
 const Produto = require("../../Models/Produto");
 const Contrato = require("../../Models/Contrato");
 
+//lista de todos os pessoas
+exports.index = async (requisicao, resposta) => {
+    try{
+        var contratos = await Contrato.findAll();
+
+        resposta.render('admin/contratos/index',{contratos: contratos});
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
+};
+
 //formulario para cadastro de clientes
 exports.create =  async (requisicao, resposta) => {
     var pessoaId = requisicao.params.id;
