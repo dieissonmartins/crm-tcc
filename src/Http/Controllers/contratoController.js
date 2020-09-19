@@ -16,8 +16,9 @@ exports.index = async (requisicao, resposta) => {
 
 //formulario para cadastro de clientes
 exports.create =  async (requisicao, resposta) => {
+    var {clienteId,tipo} = requisicao.params;
     var pessoaId = requisicao.params.id;
-    var clienteId = requisicao.params.clienteId;
+    //resposta.json(requisicao.params);
 
     try{
         const servicos = await Servico.findAll();
@@ -28,6 +29,7 @@ exports.create =  async (requisicao, resposta) => {
             pessoaId: pessoaId,
             servicos: servicos,
             produtos: produtos,
+            tipo: tipo
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
@@ -36,21 +38,39 @@ exports.create =  async (requisicao, resposta) => {
 
 //salva requisicao de cadastro de pessoa no banco de dados
 exports.store = async (requisicao, resposta) => {
-    var {dataVenda,dataVencimento,valor,produtoId,servicoId,anexoFile,pessoaId,clienteId} = requisicao.body;
+    var {dataVenda,dataVencimento,valor,produtoId,servicoId,anexoFile,pessoaId,clienteId,tipo} = requisicao.body;
     //resposta.json(requisicao.body);
-
+    
     try{
-        await Contrato.create({
-            dataVenda: dataVenda,
-            dataVencimento: dataVencimento,
-            valor: valor,
-            produtoId: produtoId,
-            servicoId: servicoId,
-            anexoFile: anexoFile,
-            pessoaId: pessoaId,
-        });
-        resposta.redirect('pessoas/'+pessoaId+'/'+clienteId);
+        if(tipo == "empresa"){ //cadastro contrato empresa
+            var empresaId = pessoaId;
+            //resposta.json(empresaId);
 
+            await Contrato.create({
+                dataVenda: dataVenda,
+                dataVencimento: dataVencimento,
+                valor: valor,
+                produtoId: produtoId,
+                servicoId: servicoId,
+                anexoFile: anexoFile,
+                pessoaId: empresaId, 
+                empresaId: empresaId 
+            });
+
+            resposta.redirect('empresas/'+empresaId+'/'+clienteId);
+        }else{
+            await Contrato.create({ //cadastro contrato pessoa
+                dataVenda: dataVenda,
+                dataVencimento: dataVencimento,
+                valor: valor,
+                produtoId: produtoId,
+                servicoId: servicoId,
+                anexoFile: anexoFile,
+                pessoaId: pessoaId,
+                empresaId: pessoaId
+            });
+            resposta.redirect('pessoas/'+pessoaId+'/'+clienteId);
+        }
     }catch(err){
         resposta.render(400).json({ error: err.message });
     }

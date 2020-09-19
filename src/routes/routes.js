@@ -49,7 +49,7 @@ router.group('/empresas', function(router) {
 router.group('/contratos', function(router) {
     router.get('/',             contratoController.index);
     router.post('/',            contratoController.store);
-    router.get('/:id/:clienteId/create',   contratoController.create);
+    router.get('/:id/:clienteId/:tipo/create',   contratoController.create);
     //router.post('/destroy',     contratoController.destroy);
     //router.get('/:id/edit/:clienteId',     contratoController.edit);
     //router.get('/:id/',         contratoController.show);
