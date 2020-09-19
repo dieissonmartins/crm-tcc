@@ -145,7 +145,7 @@
                           <td><%= empresa.telefone %></td>
                           <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(empresa.createdAt) %></td>
                           <td style="float: right;">
-                            <a href="/empresas/<%= empresa.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
+                            <a href="/empresas/<%= empresa.id %>/<%= cliente.id %>" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                             <a href="/empresas/<%= empresa.id %>/edit/<%= cliente.id %>/" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <form action="/empresas/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
                                 <input type="hidden" name="id" value="<%= empresa.id %>">

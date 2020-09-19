@@ -42,7 +42,7 @@ router.group('/empresas', function(router) {
     router.get('/:id/create',   empresaController.create);
     router.post('/destroy',     empresaController.destroy);
     router.get('/:id/edit/:clienteId',     empresaController.edit);
-    router.get('/:id/',         empresaController.show);
+    router.get('/:id/:clienteId',         empresaController.show);
     router.post('/update',      empresaController.update);
 });
 

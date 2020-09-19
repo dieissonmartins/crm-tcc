@@ -1,6 +1,7 @@
 
 //importe model pessoa
 const Empresa = require("../../Models/Empresa");
+const Contrato = require("../../Models/Contrato");
 
 //lista de todos os pessoas
 exports.index = (requisicao, resposta) => {
@@ -49,11 +50,18 @@ exports.store = (requisicao, resposta) => {
 
 //modulo para buscar dados no banco de um pessoa
 exports.show = (requisicao, resposta) => {
-    var id = requisicao.params.id;
+    var {id,clienteId} = requisicao.params;
 
     try{
-        Empresa.findOne({where: {id: id}}).then((pessoa) => {
-            resposta.render('admin/pessoas/show', {pessoa: pessoa});
+        Empresa.findOne({
+            where: {id: id},
+            include:[{model: Contrato}], //Join para incluir contratos  
+        }).then((empresa) => {
+            resposta.render('admin/empresas/show', {
+                empresa: empresa,
+                clienteId: clienteId,
+                contratos: empresa.contratos  
+            });
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
