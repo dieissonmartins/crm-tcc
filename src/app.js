@@ -14,6 +14,7 @@ const Cliente   = require('./Models/Cliente');
 const Empresa   = require('./Models/Empresa'); 
 const Pessoa    = require('./Models/Pessoa');
 const Contrato  = require('./Models/Contrato');
+const User      = require('./Models/User');
 
 //instância do express
 const app = express();

@@ -9,12 +9,22 @@ const servicoController = require('../Http/Controllers/servicoController');
 const pessoaController  = require('../Http/Controllers/pessoaController');
 const empresaController = require('../Http/Controllers/empresaController');
 const contratoController = require('../Http/Controllers/contratoController');
+const userController     = require('../Http/Controllers/userController');
 
 //Middleware ADMIN
-//const adminAuth = require('../Http/Middleware/adminAuth');
+const adminAuth = require("../Http/Middleware/adminAuth");
+
+
 
 //carregar router
 const router = express.Router();
+
+router.group('/login', function(router){
+    router.get('/', userController.login);
+});
+
+//Middleware authentication
+router.use(adminAuth);
 
 router.group('/clientes', function(router) {
     router.get('/',             clienteController.index);
