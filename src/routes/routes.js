@@ -21,6 +21,7 @@ const router = express.Router();
 
 router.group('/login', function(router){
     router.get('/', userController.login);
+    router.post("/authenticate", userController.authenticate);
 });
 
 //Middleware authentication
