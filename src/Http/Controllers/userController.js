@@ -4,6 +4,38 @@ const User = require("../../Models/User");
 //encriptar dados 
 const bcrypt = require("bcrypt");
 
+
+//formulario para cadastro
+exports.create = (requisicao, resposta) => {
+   
+    try{
+        resposta.render('admin/users/create');
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
+};
+
+exports.store = (requisicao, resposta) => {
+    var {name,email,password} = requisicao.body;
+    //resposta.json(requisicao.body);
+
+    var salt            = bcrypt.genSaltSync(10);
+    var hashPassword    = bcrypt.hashSync(password, salt);
+
+    try{
+        User.create({
+            name: name,
+            email: email,
+            password: hashPassword
+        }).then((user) => {
+            resposta.json(user);
+            //resposta.redirect('/clientes');
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
+};
+
 //rota de login
 exports.login = (requisicao, resposta) => {
     
@@ -23,22 +55,22 @@ exports.authenticate = (requisicao, resposta) => {
         if(user != undefined){ //Se existe Usuário com mesmo e-mail
             //validar senha com bcrypt
             var correct = bcrypt.compareSync(password,user.password);
-
+           
             //Se existir senha cria sessão user
             if(correct){
-                resposta.session.user = {
+                requisicao.session.user = {
                     id: user.id,
                     name: user.name,
                     email: user.email,
                 }
-                //res.json({email,password});
-                resposta.redirect("/admin/clientes");    
+                
+                resposta.redirect("/clientes");    
             
             }else{
-                resposta.redirect("/login");    
+               // resposta.redirect("/login");    
             }
         }else{ //Se não existe, volta para login 
-            resposta.redirect("/login");
+            //resposta.redirect("/login");
         }
     });
 };

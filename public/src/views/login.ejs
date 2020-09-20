@@ -127,7 +127,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
-        <form action="/authenticate" method="POST">
+        <form action="/login/authenticate" method="POST">
           <div class="form-group has-feedback">
             <input name="email" type="email" class="form-control" placeholder="E-mail" />
             <span
@@ -175,14 +175,5 @@
     <!-- /.login-box -->
 
     <%- include('layout/js.ejs'); %>
-    <script>
-      $(function() {
-        $("input").iCheck({
-          checkboxClass: "icheckbox_square-blue",
-          radioClass: "iradio_square-blue",
-          increaseArea: "20%" /* optional */
-        });
-      });
-    </script>
   </body>
 </html>
