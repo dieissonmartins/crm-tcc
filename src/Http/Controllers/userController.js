@@ -5,6 +5,18 @@ const User = require("../../Models/User");
 const bcrypt = require("bcrypt");
 
 
+//lista de todos os users
+exports.index = (requisicao, resposta) => {
+    
+    try{
+        User.findAll().then((usuarios) => {
+            resposta.render('admin/users/index',{usuarios: usuarios});
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
+};
+
 //formulario para cadastro
 exports.create = (requisicao, resposta) => {
    
@@ -67,10 +79,10 @@ exports.authenticate = (requisicao, resposta) => {
                 resposta.redirect("/clientes");    
             
             }else{
-               // resposta.redirect("/login");    
+               resposta.redirect("/login");    
             }
         }else{ //Se não existe, volta para login 
-            //resposta.redirect("/login");
+            resposta.redirect("/login");
         }
     });
 };

@@ -88,7 +88,7 @@ router.group('/produtos', function(router) {
 });
 
 router.group('/users', function(router) {
-    //router.get('/',             userController.index);
+    router.get('/',             userController.index);
     router.get('/create',       userController.create);
     router.post('/',            userController.store);
     //router.post('/destroy',     userController.destroy);
