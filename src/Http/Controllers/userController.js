@@ -87,7 +87,13 @@ exports.authenticate = (requisicao, resposta) => {
     });
 };
 
-//requisicao deleta servico no banco de dados
+//logout
+exports.logout = (requisicao, resposta) => {
+    requisicao.session.user = undefined;
+    resposta.redirect("/login");
+};
+
+//requisicao deleta user no banco de dados
 exports.destroy = (requisicao, resposta) => {
     var id = requisicao.body.id;
 
