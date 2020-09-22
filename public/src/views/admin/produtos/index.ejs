@@ -44,7 +44,11 @@
                             <td id="nome"><%= produto.nome %></td>
                             <td><%= produto.descricao %></td>
                             <td><%= produto.valor %></td>
-                            <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(produto.createdAt) %></td>
+                            <td>
+                              <%= ((produto.createdAt.getDate() > 9) ? produto.createdAt.getDate() : ('0' + produto.createdAt.getDate()))+
+                                '/' +((produto.createdAt.getMonth() > 8) ? (produto.createdAt.getMonth() + 1) : ('0' + (produto.createdAt.getMonth() + 1)))+
+                                '/' + produto.createdAt.getFullYear() %>
+                            </td>
                             <td style="float: right;">
                               <a href="/produtos/<%= produto.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                               <a href="/produtos/<%= produto.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

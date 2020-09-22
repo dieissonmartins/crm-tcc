@@ -43,7 +43,11 @@
                             <td><%= cliente.id %></td>
                             <td id="nome"><%= cliente.nome %></td>
                             <td><%= cliente.telefone %></td>
-                            <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(cliente.createdAt) %></td>
+                            <td>
+                              <%= ((cliente.createdAt.getDate() > 9) ? cliente.createdAt.getDate() : ('0' + cliente.createdAt.getDate()))+
+                                '/' +((cliente.createdAt.getMonth() > 8) ? (cliente.createdAt.getMonth() + 1) : ('0' + (cliente.createdAt.getMonth() + 1)))+
+                                '/' + cliente.createdAt.getFullYear() %>
+                            </td>
                             <td style="float: right;">
                               <a href="/clientes/<%= cliente.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                               <a href="/clientes/<%= cliente.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -91,7 +95,11 @@
                           <td><%= pessoa.cpf %></td>
                           <td><%= pessoa.telefone %></td>
                           <td><%= pessoa.sexo %></td>
-                          <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(pessoa.createdAt) %></td>
+                          <td>
+                            <%= ((pessoa.createdAt.getDate() > 9) ? pessoa.createdAt.getDate() : ('0' + pessoa.createdAt.getDate()))+
+                              '/' +((pessoa.createdAt.getMonth() > 8) ? (pessoa.createdAt.getMonth() + 1) : ('0' + (pessoa.createdAt.getMonth() + 1)))+
+                              '/' + pessoa.createdAt.getFullYear() %>
+                          </td>
                           <td style="float: right;">
                             <a href="/pessoas/<%= pessoa.id %>/<%= cliente.id %>" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                             <a href="/pessoas/<%= pessoa.id %>/edit/<%= cliente.id %>/" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -143,7 +151,11 @@
                           <td><%= empresa.atividade %></td>
                           <td><%= empresa.razaoSocial %></td>
                           <td><%= empresa.telefone %></td>
-                          <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(empresa.createdAt) %></td>
+                          <td>
+                            <%= ((empresa.createdAt.getDate() > 9) ? empresa.createdAt.getDate() : ('0' + empresa.createdAt.getDate()))+
+                              '/' +((empresa.createdAt.getMonth() > 8) ? (empresa.createdAt.getMonth() + 1) : ('0' + (empresa.createdAt.getMonth() + 1)))+
+                              '/' + empresa.createdAt.getFullYear() %>
+                          </td>
                           <td style="float: right;">
                             <a href="/empresas/<%= empresa.id %>/<%= cliente.id %>" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                             <a href="/empresas/<%= empresa.id %>/edit/<%= cliente.id %>/" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

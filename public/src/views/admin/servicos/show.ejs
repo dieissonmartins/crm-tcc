@@ -43,7 +43,11 @@
                             <td id="nome"><%= servico.nome %></td>
                             <td><%= servico.descricao %></td>
                             <td><%= servico.valor %></td>
-                            <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(servico.createdAt) %></td>
+                            <td>
+                              <%= ((servico.createdAt.getDate() > 9) ? servico.createdAt.getDate() : ('0' + servico.createdAt.getDate()))+
+                                '/' +((servico.createdAt.getMonth() > 8) ? (servico.createdAt.getMonth() + 1) : ('0' + (servico.createdAt.getMonth() + 1)))+
+                                '/' + servico.createdAt.getFullYear() %>
+                            </td>
                             <td style="float: right;">
                               <a href="/servicos/<%= servico.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                               <a href="/servicos/<%= servico.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

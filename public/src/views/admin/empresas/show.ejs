@@ -48,7 +48,11 @@
                             <td><%= empresa.atividade %></td>
                             <td><%= empresa.razaoSocial %></td>
                             <td><%= empresa.telefone %></td>
-                            <td><%= new Intl.DateTimeFormat('pt-BR', {  year: 'numeric', month: 'numeric', day: 'numeric'}).format(empresa.createdAt) %></td>
+                            <td>
+                              <%= ((empresa.createdAt.getDate() > 9) ? empresa.createdAt.getDate() : ('0' + empresa.createdAt.getDate()))+
+                                '/' +((empresa.createdAt.getMonth() > 8) ? (empresa.createdAt.getMonth() + 1) : ('0' + (empresa.createdAt.getMonth() + 1)))+
+                                '/' + empresa.createdAt.getFullYear() %>
+                            </td>
                             <td style="float: right;">
                               <a href="/empresas/<%= empresa.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
                               <a href="/empresas/<%= empresa.id %>/edit/<%= clienteId %>/" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -92,8 +96,16 @@
                       <% contratos.forEach(contrato => { %>
                           <tr>
                               <td><%= contrato.id %></td>
-                              <td><%= contrato.dataVenda %></td>
-                              <td><%= contrato.dataVencimento %></td>
+                              <td>
+                                <%= ((contrato.dataVenda.getDate() > 9) ? contrato.dataVenda.getDate() : ('0' + contrato.dataVenda.getDate()))+
+                                  '/' +((contrato.dataVenda.getMonth() > 8) ? (contrato.dataVenda.getMonth() + 1) : ('0' + (contrato.dataVenda.getMonth() + 1)))+
+                                  '/' + contrato.dataVenda.getFullYear() %>
+                              </td>
+                              <td>
+                                <%= ((contrato.dataVencimento.getDate() > 9) ? contrato.dataVencimento.getDate() : ('0' + contrato.dataVencimento.getDate()))+
+                                  '/' +((contrato.dataVencimento.getMonth() > 8) ? (contrato.dataVencimento.getMonth() + 1) : ('0' + (contrato.dataVencimento.getMonth() + 1)))+
+                                  '/' + contrato.dataVencimento.getFullYear() %>
+                              </td>
                               <td><%= contrato.valor %></td>
                               <td></td>
                               <td style="float: right;">
