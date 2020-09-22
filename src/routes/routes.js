@@ -91,7 +91,7 @@ router.group('/users', function(router) {
     router.get('/',             userController.index);
     router.get('/create',       userController.create);
     router.post('/',            userController.store);
-    //router.post('/destroy',     userController.destroy);
+    router.post('/destroy',     userController.destroy);
     //router.get('/:id/edit',     userController.edit);
     //router.get('/:id/',         userController.show);
     //router.post('/update',      userController.update);

@@ -44,9 +44,9 @@
                             <td id="nome"><%= usuario.email %></td>
                             <td id="nome"><%= "*****" %></td>
                             <td style="float: right;">
-                              <a href="/usuarios/<%= usuario.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                              <a href="/usuarios/<%= usuario.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                              <form action="/usuarios/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
+                              <!--<a href="/usuarios/<%= usuario.id %>/" class="btn btn-default"><i class="fa fa-street-view" aria-hidden="true"></i></a>
+                              <a href="/usuarios/<%= usuario.id %>/edit" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                              <form action="/users/destroy" method="POST" style="display: inline;" onsubmit="deletarConfirmacao(event, this);">
                                   <input type="hidden" name="id" value="<%= usuario.id %>">
                                   <button type="submit" class="btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                               </form>
@@ -66,7 +66,7 @@
   function deletarConfirmacao(event, form)
   {
       event.preventDefault();
-      var deletar = confirm("Você quer deletar este Serviço?");
+      var deletar = confirm("Você quer deletar?");
       if(deletar){
           form.submit();
       }

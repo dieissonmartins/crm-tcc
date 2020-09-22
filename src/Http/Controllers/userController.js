@@ -86,3 +86,16 @@ exports.authenticate = (requisicao, resposta) => {
         }
     });
 };
+
+//requisicao deleta servico no banco de dados
+exports.destroy = (requisicao, resposta) => {
+    var id = requisicao.body.id;
+
+    try{
+        User.destroy({where: {id: id}}).then(() => {
+            resposta.redirect("/users");
+        });
+    }catch(err){
+        resposta.render(400).json({ error: err.message });
+    }
+};
