@@ -15,6 +15,21 @@ const userController     = require('../Http/Controllers/userController');
 const adminAuth = require("../Http/Middleware/adminAuth");
 
 
+//upload de arquivos
+const multer = require("multer");
+
+
+const storage = multer.diskStorage({
+    destination: function(requisicao,anexoFile, cb){
+        cb(null,"upload/contratos/");
+    },
+    filename: function(requisicao,anexoFile, cb){
+        cb(null, anexoFile.originalname);
+    }
+});
+
+//deretorios dos contratos
+const uploadContrato = multer({storage});
 
 //carregar router
 const router = express.Router();
@@ -58,11 +73,11 @@ router.group('/empresas', function(router) {
 });
 
 router.group('/contratos', function(router) {
-    router.get('/',             contratoController.index);
-    router.post('/',            contratoController.store);
+    router.get('/',                              contratoController.index);
+    router.post('/', uploadContrato.single("anexoFile"),   contratoController.store);
     router.get('/:id/:clienteId/:tipo/create',   contratoController.create);
     //router.post('/destroy',     contratoController.destroy);
-    //router.get('/:id/edit/:clienteId',     contratoController.edit);
+    //router.get('/:id/edit/:cuploadContratoslienteId',     contratoController.edit);
     //router.get('/:id/',         contratoController.show);
     //router.post('/update',      contratoController.update);
 });
