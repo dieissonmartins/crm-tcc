@@ -2,6 +2,16 @@
 const express = require('express');
     require('express-group-routes');//modulo para agrupamento de rotas  
 
+//teste socket.io
+var app  = express();
+var http = require("http").createServer(app);
+var io   = require("socket.io")(http);
+
+io.on("connection",(socket) => {
+    console.log(socket.id);
+});
+/////////////////
+
 //import controllers 
 const clienteController = require('../Http/Controllers/clienteController');
 const produtoController = require('../Http/Controllers/produtoController');
@@ -17,6 +27,7 @@ const adminAuth = require("../Http/Middleware/adminAuth");
 
 //upload de arquivos
 const multer = require("multer");
+const { Socket } = require('dgram');
 
 
 const storage = multer.diskStorage({
