@@ -1,5 +1,7 @@
 
-const app = require('./app');
+//const app = require('./app');
+import app from "./app";
+
 
 //iniciar servidor
 app.listen(8080, () => {
