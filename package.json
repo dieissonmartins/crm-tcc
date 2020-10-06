@@ -4,7 +4,7 @@
   "description": "Trabalho de conlusão do curso",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon src/server.js",
+    "server": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,10 +27,13 @@
     "express-session": "^1.17.1",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
-    "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "sequelize": "^6.3.5",
     "slugify": "^1.4.5",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "sucrase": "^3.15.0"
   }
 }
