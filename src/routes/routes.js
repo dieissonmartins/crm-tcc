@@ -65,13 +65,13 @@ router.use(adminAuth);
 router.get("/pagar", async (req, res) => {
 
     var id                 = "" + Date.now();
-    var emailPagador       = "dieissondev.martins.santos@gmail.com";
+    var emailPagador       = "dev.martins.santos@gmail.com";
     var descricao          = "descrição da venda aqui...";
     var valor              = 100;
 
     var dados = {
         items: [
-            item = {
+            {
                 id: id,
                 title: descricao, 
                 quantity: 1,
