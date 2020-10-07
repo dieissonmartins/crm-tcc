@@ -25,6 +25,14 @@ const userController     = require('../Http/Controllers/userController');
 const adminAuth = require("../Http/Middleware/adminAuth");
 
 
+//teste mercado pado
+import MercadoPago from "mercadopago";
+
+MercadoPago.configure({
+    sandbox: true,
+    access_token: "TEST-4596512322898184-100717-3e86cbbe22624bba2e387a26a5785a49-215990228"
+});
+
 //upload de arquivos
 const multer = require("multer");
 const { Socket } = require('dgram');
@@ -52,6 +60,40 @@ router.group('/login', function(router){
 
 //Middleware authentication
 router.use(adminAuth);
+
+
+router.get("/pagar", async (req, res) => {
+
+    var id                 = "" + Date.now();
+    var emailPagador       = "dieissondev.martins.santos@gmail.com";
+    var descricao          = "descrição da venda aqui...";
+    var valor              = 100;
+
+    var dados = {
+        items: [
+            item = {
+                id: id,
+                title: descricao, 
+                quantity: 1,
+                currency_id: 'BRL',
+                unit_price: parseFloat(valor)
+            }
+        ],
+        payer:{
+            email: emailPagador
+        },
+        external_reference: id,
+    };
+
+    try {
+        var pagamento = await MercadoPago.preferences.create(dados);
+        console.log(pagamento);
+        return res.redirect(pagamento.body.init_point);
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 router.group('/clientes', function(router) {
     router.get('/',             clienteController.index);

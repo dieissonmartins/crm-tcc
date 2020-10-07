@@ -21,6 +21,14 @@ const Contrato = connection.define('contratos', {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: true
     },
+    codigo:{
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    pagador:{
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
     anexoFile:{
         type: Sequelize.TEXT,
         allowNull: true
