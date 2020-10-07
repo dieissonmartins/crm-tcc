@@ -3,6 +3,14 @@ const Servico = require("../../Models/Servico");
 const Produto = require("../../Models/Produto");
 const Contrato = require("../../Models/Contrato");
 
+
+import mercadoPago from "mercadopago";
+
+mercadoPago.configure({
+    sandbox: true,
+    access_token: "TEST-4596512322898184-100717-3e86cbbe22624bba2e387a26a5785a49-215990228"
+});
+
 //lista de todos os pessoas
 exports.index = async (requisicao, resposta) => {
     try{
