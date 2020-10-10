@@ -13,16 +13,26 @@ io.on("connection",(socket) => {
 /////////////////
 
 //import controllers 
-const clienteController = require('../Http/Controllers/clienteController');
-const produtoController = require('../Http/Controllers/produtoController');
-const servicoController = require('../Http/Controllers/servicoController');
-const pessoaController  = require('../Http/Controllers/pessoaController');
-const empresaController = require('../Http/Controllers/empresaController');
-const contratoController = require('../Http/Controllers/contratoController');
-const userController     = require('../Http/Controllers/userController');
+import clienteController from "../Http/Controllers/clienteController";
+import produtoController from "../Http/Controllers/produtoController";
+import servicoController from "../Http/Controllers/servicoController";
+import pessoaController from "../Http/Controllers/pessoaController";
+import empresaController from "../Http/Controllers/empresaController";
+import contratoController from "../Http/Controllers/contratoController";
+import userController from "../Http/Controllers/userController";
+
+//const clienteController = require('../Http/Controllers/clienteController');
+//const produtoController = require('../Http/Controllers/produtoController');
+//const servicoController = require('../Http/Controllers/servicoController');
+//const pessoaController  = require('../Http/Controllers/pessoaController');
+//const empresaController = require('../Http/Controllers/empresaController');
+//const contratoController = require('../Http/Controllers/contratoController');
+//const userController     = require('../Http/Controllers/userController');
 
 //Middleware ADMIN
-const adminAuth = require("../Http/Middleware/adminAuth");
+import adminAuth from "../Http/Middleware/adminAuth";
+//const adminAuth = require("../Http/Middleware/adminAuth");
+
 
 
 //teste mercado pado
@@ -167,4 +177,5 @@ router.group('/users', function(router) {
 });
 
 //exportar rotas
-module.exports = router;
+export default router;
+//module.exports = router;
