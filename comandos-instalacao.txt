@@ -26,4 +26,6 @@ SESSOES DE LOGIN
 
 14°- yarn add multer | Para upload de arquivos
 
-15°- yarn add nodemailter --save | Enviar E-mails 
+15°- yarn add nodemailter --save | Enviar E-mails
+
+16°- yarn add html-pdf --save | Gerar PDFs 

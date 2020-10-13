@@ -21,6 +21,9 @@ import empresaController from "../Http/Controllers/empresaController";
 import contratoController from "../Http/Controllers/contratoController";
 import userController from "../Http/Controllers/userController";
 
+//teste gerar PDF
+import pdf from "html-pdf";
+
 //const clienteController = require('../Http/Controllers/clienteController');
 //const produtoController = require('../Http/Controllers/produtoController');
 //const servicoController = require('../Http/Controllers/servicoController');
@@ -103,6 +106,12 @@ router.get("/pagar", async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+});
+
+router.get("/gerarpdf", (req, res) => {
+    pdf.create("Olá, teste gerar pdf com node.js",{}).toFile("./arquivogerado.pdf",(err,res) => {
+        res.send("PDF criado...");
+    });
 });
 
 router.group('/clientes', function(router) {
