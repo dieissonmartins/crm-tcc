@@ -36,10 +36,10 @@ import pdf from "html-pdf";
 import adminAuth from "../Http/Middleware/adminAuth";
 //const adminAuth = require("../Http/Middleware/adminAuth");
 
-
-
 //teste mercado pado
 import MercadoPago from "mercadopago";
+
+
 
 MercadoPago.configure({
     sandbox: true,
@@ -74,6 +74,10 @@ router.group('/login', function(router){
 //Middleware authentication
 router.use(adminAuth);
 
+//variaveis locais 
+router.locals = {
+    USERLOGIN:"Dieisson Maritns",
+};
 
 router.get("/pagar", async (req, res) => {
 
