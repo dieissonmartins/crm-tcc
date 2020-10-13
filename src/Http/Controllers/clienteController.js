@@ -1,8 +1,22 @@
 //importe model Cliente
-const Cliente       = require("../../Models/Cliente");
-const Pessoa        = require("../../Models/Pessoa");
-const bodyParser    = require('body-parser'); 
-const Empresa = require("../../Models/Empresa");
+import Cliente from "../../Models/Cliente";
+import Pessoa from "../../Models/Pessoa";
+import Empresa from "../../Models/Empresa";
+import nodemailer from "nodemailer";
+//const Cliente       = require("../../Models/Cliente");
+//const Pessoa        = require("../../Models/Pessoa");
+//const Empresa = require("../../Models/Empresa");
+
+let transporter = nodemailer.createTransport({
+    host: "Informe servidor aqui...",
+    port: 587, //porta de entrada
+    secure: true, //possui SSl: TRUE : FALSE
+    auth: {
+        user: "", //email
+        pass: "12345" //senha 
+    }
+});
+
 
 //lista de todos os clientes
 exports.index = (requisicao, resposta) => {
@@ -35,7 +49,15 @@ exports.store = (requisicao, resposta) => {
             nome: nome,
             telefone: telefone
         }).then((cliente) => {
-            resposta.redirect('/clientes');
+            transporter.sendMail({
+                from:"Dieisson Martins <>  emailAuthAqui",
+                to:"dieisson.martins.santos@gmail.com",
+                subject:"oi, sou o Dieisson este é um email de teste",
+                text:"oi, sou o Dieisson este é o corpo do email de teste",
+                html:"<p>oi, sou o Dieisson este é o corpo do email de teste</p>"
+            }).then(() => {
+                resposta.redirect('/clientes');
+            });
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });

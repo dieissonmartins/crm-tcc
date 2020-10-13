@@ -25,3 +25,5 @@ SESSOES DE LOGIN
 13°- npm i express-group-routes | Grupo de rotas
 
 14°- yarn add multer | Para upload de arquivos
+
+15°- yarn add nodemailter --save | Enviar E-mails 
