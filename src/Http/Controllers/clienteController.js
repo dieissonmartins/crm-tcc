@@ -6,6 +6,7 @@ import nodemailer from "nodemailer";
 //const Cliente       = require("../../Models/Cliente");
 //const Pessoa        = require("../../Models/Pessoa");
 //const Empresa = require("../../Models/Empresa");
+import Mailer from "../../Models/Mailer";
 
 let transporter = nodemailer.createTransport({
     host: "Informe servidor aqui...",

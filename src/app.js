@@ -17,11 +17,12 @@ import routes from "./routes/routes";
 
 
 //models
-import Cliente  from "./routes/routes";
+import Cliente  from "./Models/Cliente";
 import Empresa  from "./Models/Empresa";
 import Pessoa   from "./Models/Pessoa";
 import Contrato from "./Models/Contrato";
 import User     from "./Models/User";
+import Mailer from "./Models/Mailer";
 
 //const Cliente   = require('./Models/Cliente'); 
 //const Empresa   = require('./Models/Empresa'); 
