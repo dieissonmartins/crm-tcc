@@ -8,15 +8,19 @@ import nodemailer from "nodemailer";
 //const Empresa = require("../../Models/Empresa");
 import Mailer from "../../Models/Mailer";
 
-let transporter = nodemailer.createTransport({
-    host: "Informe servidor aqui...",
-    port: 587, //porta de entrada
-    secure: true, //possui SSl: TRUE : FALSE
-    auth: {
-        user: "", //email
-        pass: "12345" //senha 
-    }
+Mailer.findOne().then((email) =>{
+    //console.log(email.host);
+    let transporter = nodemailer.createTransport({
+        host: email.host,
+        port: email.port, //porta de entrada
+        secure: email.secure, //possui SSl: TRUE : FALSE
+        auth: {
+            user: email.auth_user, //email
+            pass: email.auth_pass//senha 
+        }
+    });
 });
+
 
 
 //lista de todos os clientes
@@ -50,15 +54,17 @@ exports.store = (requisicao, resposta) => {
             nome: nome,
             telefone: telefone
         }).then((cliente) => {
+            resposta.redirect('/clientes');
+            /*
             transporter.sendMail({
-                from:"Dieisson Martins <>  emailAuthAqui",
-                to:"dieisson.martins.santos@gmail.com",
+                from:"Dieisson Martins <> dieisson.martins.santos@gmail.com",
+                to:"dieisson@rkminformatica.com.br",
                 subject:"oi, sou o Dieisson este é um email de teste",
                 text:"oi, sou o Dieisson este é o corpo do email de teste",
                 html:"<p>oi, sou o Dieisson este é o corpo do email de teste</p>"
             }).then(() => {
                 resposta.redirect('/clientes');
-            });
+            }); */
         });
     }catch(err){
         resposta.render(400).json({ error: err.message });
